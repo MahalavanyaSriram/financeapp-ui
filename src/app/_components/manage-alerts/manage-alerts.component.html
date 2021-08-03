@@ -1,0 +1,30 @@
+<div class="dialog">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 mat-dialog-title>{{object.action}} Alert</h2>
+        <button mat-icon-button fxFlexAlign="end center" color="primary" (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+    </div>
+    <div class="box" mat-dialog-content scrollStrategy>
+        <form [formGroup]="alertForm" class="example-form">
+            <mat-form-field>
+                <input class="example-full-width" matInput placeholder="Alert Name" formControlName="alertname" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="First Alert Date" class="example-full-width" formControlName="alertdeliverydate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <section>
+                <label class="example-margin">Alert Frequency:</label>
+                <mat-radio-group formControlName="alerttype" fxLayout="row" fxLayoutAlign="space-between center">
+                    <mat-radio-button color="primary" *ngFor="let alert_type of alertTypeList" [value]="alert_type.alert_type">{{alert_type.alert_type}}</mat-radio-button>
+                </mat-radio-group>
+            </section>
+            <section fxLayout="row" fxLayoutAlign="space-around center">
+                <button mat-raised-button color="primary" class="btn-submit" (click)="onSubmit()">Submit</button>
+                <button mat-raised-button color="warn" class="btn-cancel" (click)="onClose()">Cancel</button>
+            </section>
+        </form>
+    </div>
+</div>

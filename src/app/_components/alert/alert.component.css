@@ -1,0 +1,27 @@
+.table-wrapper {
+    margin-top: 80px;
+    width: 100%;
+}
+
+.Create {
+    margin-right: 5%;
+}
+
+table {
+    width: 90%;
+    margin-top: 10px;
+    font-family: Rockwell, Courier Bold, Courier, Georgia, Times, Times New Roman, serif;
+    overflow-x: scroll;
+}
+
+.paginator {
+    width: 90%;
+    font-size: large;
+}
+
+th {
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: #DFDFDC;
+    color: #073b66;
+}

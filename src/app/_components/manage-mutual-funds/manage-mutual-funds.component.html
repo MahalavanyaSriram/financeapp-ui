@@ -1,0 +1,45 @@
+<div class="dialog">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 mat-dialog-title>{{object.action}} Mutual Funds</h2>
+        <button mat-icon-button fxFlexAlign="end center" color="primary" (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+    </div>
+    <div class="box" mat-dialog-content scrollStrategy>
+        <form [formGroup]="mutualFundForm" class="example-form">
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" matInput [readonly]="this.object.action==='Update'? true:false" value="{{mutualFundForm.get('folioNumber').value}}" placeholder="Folio Number" formControlName="folioNumber" (input)="handleInput($event.target.value)" required>
+                <mat-error *ngIf="folioNumber.invalid">
+                    <errorAlert></errorAlert>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-field">
+                <input class="example-full-width" matInput placeholder="Portfolio Name" formControlName="portfolioName" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" matInput placeholder="Name" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Purchase Amount" formControlName="purchaseAmount" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input matInput [matDatepicker]="picker1" placeholder="Purchase Date" formControlName="purchaseDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Current Amount" formControlName="currentAmount" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Dividend Amount" formControlName="dividendAmount" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Net Amount " formControlName="netAmount" required>
+            </mat-form-field>
+            <div class="buttons">
+                <button mat-raised-button color="primary" class="btn-submit" (click)="onSubmit()">Submit</button>
+                <button mat-raised-button color="warn" class="btn-cancel" (click)="onClose()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

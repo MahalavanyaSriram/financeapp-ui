@@ -1,0 +1,57 @@
+<div class="dialog">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 mat-dialog-title>{{object.action}} Fixed Deposit</h2>
+        <button mat-icon-button fxFlexAlign="end center" color="primary" (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+    </div>
+    <div class="box" mat-dialog-content scrollStrategy>
+        <form [formGroup]="investmentForm" class="example-form">
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" matInput [readonly]="this.object.action==='Update'? true:false" value="{{investmentForm.get('id').value}}" placeholder="Investment Id" formControlName="id" (input)="handleInput($event.target.value)" required>
+                <mat-error *ngIf="id.invalid">
+                    <errorAlert></errorAlert>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-field">
+                <mat-select placeholder="Bank" formControlName="bank">
+                    <mat-option *ngFor="let institution of institutionList" [value]="institution.institution">{{institution.institution}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-field">
+                <input class="example-full-width" matInput placeholder="Investment Holder Name" formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Deposit Amount" formControlName="depositAmount" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input matInput [matDatepicker]="picker1" placeholder="Deposit Date" formControlName="depositDate">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Maturity Amount" formControlName="maturityAmount" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input matInput [matDatepicker]="picker" placeholder="Maturity Date" [min]="depositDate.value" formControlName="maturityDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Period " formControlName="period" required>
+            </mat-form-field>
+            <mat-form-field class="example-half-field">
+                <input class="example-half-width" type="number" matInput placeholder="Interest Rate " formControlName="interestRate" required>
+            </mat-form-field>
+            <mat-form-field class="example-full-field">
+                <input class="example-full-width" matInput placeholder="Nominee Name " formControlName="nomineeName" required>
+            </mat-form-field>
+            <div>
+                <button mat-raised-button color="primary" class="btn-submit" (click)="onSubmit()">Submit</button>
+                <button mat-raised-button color="warn" class="btn-cancel" (click)="onClose()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

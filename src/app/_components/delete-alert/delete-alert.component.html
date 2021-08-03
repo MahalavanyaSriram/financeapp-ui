@@ -1,0 +1,15 @@
+<div class="dialog">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <h2 mat-dialog-title>Delete</h2>
+        <button mat-icon-button fxFlexAlign="end center" color="primary" (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
+    </div>
+    <div class="box" mat-dialog-content>
+        <p>Are you sure you want to delete the investment {{data.value}} ?</p>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onClose()">No Thanks</button>
+        <button mat-button (click)="onDelete()" cdkFocusInitial>Ok</button>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<mat-toolbar style="background-color: #073B66;" class="app-header">
+    <div>
+        <!-- <a class="logo">Portfolio Watch</a> -->
+        <img src="../../../assets/image/pw1.png" alt="">
+    </div>
+    <span class="nav-tool-items">
+      <a mat-button style="color: white;" routerLink="login" class="nav-item" *ngIf="!loginService.loginStatus" routerLinkActive="active">Log In</a>
+      <a mat-button  mat-raised-button routerLink="register" *ngIf="!loginService.loginStatus" routerLinkActive="active">Register</a>
+      <a  *ngIf="loginService.loginStatus" style="color: white;">Hello {{loginService.loggedUser}}!</a>
+      <a mat-button style="color: white;" routerLink="fixedDeposits" *ngIf="loginService.loginStatus" routerLinkActive="active">Fixed Deposits</a>
+      <a mat-button style="color: white;" routerLink="mutualFunds" *ngIf="loginService.loginStatus" routerLinkActive="active">Mutual Funds</a>
+      <a mat-button style="color: white;" routerLink="alerts" *ngIf="loginService.loginStatus" routerLinkActive="active">Alerts</a>
+      <a mat-button style="color: white;"
+      (click)="logout()"  *ngIf="loginService.loginStatus" routerLinkActive="active">Logout</a>
+    </span>
+</mat-toolbar>

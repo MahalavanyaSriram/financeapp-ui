@@ -1,0 +1,107 @@
+<div class="table-wrapper" fxLayout="column" fxLayoutAlign="center center">
+    <button fxFlexAlign="end" mat-raised-button (click)="openDialog('Create',null,null)" class="Create">Create Fixed Deposit</button>
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Account No</th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="bank">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank</th>
+            <td mat-cell *matCellDef="let element"> {{element.bank}} </td>
+        </ng-container>
+        <ng-container matColumnDef="investmentHolderName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="depositAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Deposit Amt</th>
+            <td mat-cell *matCellDef="let element">&#8377;{{element.depositAmount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="maturityAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Maturity Amt</th>
+            <td mat-cell *matCellDef="let element">&#8377;{{element.maturityAmount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="interestRate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Int Rate</th>
+            <td mat-cell *matCellDef="let element">{{element.interestRate}}%</td>
+        </ng-container>
+        <ng-container matColumnDef="maturityDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Maturity Date</th>
+            <td mat-cell *matCellDef="let element">{{element.maturityDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef>
+                <button mat-icon-button (click)="openDialog('Update',element,$event)" click-stop-propagation aria-label="plus icon button" color="primary">
+                    <mat-icon>plus</mat-icon>
+                  </button>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="openDialog('Update',element,$event)" click-stop-propagation aria-label="edit icon button" color="primary">
+                <mat-icon>edit</mat-icon>
+              </button></td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button aria-label="delete icon button" click-stop-propagation color="primary" (click)="delete(element)">
+                <mat-icon>delete</mat-icon>
+              </button></td>
+        </ng-container>
+
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+                <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                    <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+
+                        <div fxFlex="25%" class="header">
+                            <p><b>Investment Id: </b></p>
+                            <p><b>Bank:</b></p>
+                            <p><b>Holder Name:</b></p>
+                            <p><b>Nominee Name:</b></p>
+                            <p><b>Interest Rate:</b></p>
+                        </div>
+                        <div fxFlex="25%" class="value">
+                            <p>{{element.id}} </p>
+                            <p>{{element.bank}}</p>
+                            <p>{{element.name}}</p>
+                            <p>{{element.nomineeName}}</p>
+                            <p>{{element.interestRate}}%</p>
+                        </div>
+                        <div fxFlex="25%" class="header">
+                            <p><b>Deposit Date:</b></p>
+                            <p><b>Deposit Amount:</b></p>
+                            <p><b>Maturity Date:</b></p>
+                            <p><b>Maturity Amount:</b></p>
+                            <p><b>Period:</b></p>
+
+                        </div>
+                        <div fxFlex="25%" class="value">
+                            <p>{{element.depositDate}}</p>
+                            <p>{{element.depositAmount}}</p>
+                            <p>{{element.maturityDate}}</p>
+                            <p>{{element.maturityAmount}}</p>
+                            <p>{{element.period}} months</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row" [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+    </table>
+    <div class="paginator">
+        <mat-paginator fxLayoutAlign="center center" [pageSize]="7" [pageSizeOptions]="[5,7,9]">
+        </mat-paginator>
+    </div>
+
+
+
+</div>

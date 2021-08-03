@@ -1,0 +1,67 @@
+.box {
+    position: relative;
+    top: 0;
+    opacity: 1;
+    background: #fff;
+    border-radius: 10px;
+    transform: scale(1);
+    color: #073b66;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    z-index: 5;
+    max-height: 80%;
+}
+
+.mat-dialog-title {
+    text-align: center;
+    color: #073b66;
+}
+
+mat-check-box,
+mat-radio-button {
+    color: #949494;
+}
+
+section {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+mat-radio-group {
+    margin-top: 5px;
+}
+
+
+/* .btn-submit {
+    width: 20%; */
+
+
+/* margin-right: 40%; */
+
+
+/* margin-left: 25%;
+} */
+
+
+/* .btn-cancel {
+    width: 20%;
+    margin-right: 20%;
+    margin-left: 10%;
+} */
+
+.example-margin {
+    color: black;
+}
+
+.example-full-field {
+    width: 100%;
+    margin-right: 5%;
+}
+
+mat-form-field {
+    display: block;
+}
+
+.dialog {
+    margin: 10px;
+}

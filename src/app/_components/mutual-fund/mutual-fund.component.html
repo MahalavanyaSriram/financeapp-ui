@@ -1,0 +1,62 @@
+<div class="table-wrapper" fxLayout="column" fxLayoutAlign="center center">
+    <button fxFlexAlign="end" mat-raised-button (click)="openDialog('Create',null,null)" class="Create">Create Mutual Fund</button>
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
+        <ng-container matColumnDef="folioNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio Id</th>
+            <td mat-cell *matCellDef="let element"> {{element.folioNumber}} </td>
+        </ng-container>
+        <ng-container matColumnDef="portfolioName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Portfolio Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.portfolioName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Holder Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="purchaseDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Purchase Date</th>
+            <td mat-cell *matCellDef="let element">{{element.purchaseDate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="purchaseAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Purchase Amt</th>
+            <td mat-cell *matCellDef="let element">&#8377;{{element.purchaseAmount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="currentAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Current Amt</th>
+            <td mat-cell *matCellDef="let element">&#8377;{{element.currentAmount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="dividendAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Dividend Amt</th>
+            <td mat-cell *matCellDef="let element">&#8377;{{element.dividendAmount}} </td>
+        </ng-container>
+        <ng-container matColumnDef="netAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Net Amt</th>
+            <td mat-cell *matCellDef="let element">&#8377;{{element.netAmount}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="openDialog('Update',element,$event)" click-stop-propagation aria-label="edit icon button" color="primary">
+                <mat-icon>edit</mat-icon>
+              </button></td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-icon>plus</mat-icon>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button aria-label="delete icon button" click-stop-propagation (click)="delete(element)" color="primary">
+                <mat-icon>delete</mat-icon>
+              </button></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <div class="paginator">
+        <mat-paginator fxLayoutAlign="center center" [pageSize]="7" [pageSizeOptions]="[2, 4, 6, 8, 10]">
+        </mat-paginator>
+    </div>
+
+</div>
